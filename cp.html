@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="author" content="tvt">
     <meta name="keywords" content="현대카드 DIVE, 웹사이트 리디자인">
-    <meta name="description" content="포트폴리오를 위해 만든 현대카드 DIVE 리디자인 웹사이트입니다.">
+    <meta name="description" content="포트폴리오를 위해 만든 현대카드 DIVE 리뉴얼 웹사이트입니다.">
     <title>현대카드 DIVE</title>
 
     <!-- css -->
@@ -416,118 +416,8 @@
     <script src="assets/js/jquery.min_1.12.4.js"></script>
     <script src="assets/js/modernizr-custom.js"></script>
     <script src="assets/js/ie-checker.js"></script>
-    <script>
-        // header fill
-        $(window).scroll(function() {
-            var wScroll = $(this).scrollTop();
-            if (wScroll > 0) {
-                $("#header").addClass("fill");
-            } else {
-                $("#header").removeClass("fill");
-            }
-        });
+    <script src="assets/js/sub-custom.js"></script>
 
-        // header show-hide
-        var wHeight = $(window).height();
-        var dHeight = $(document).height();
-        var hdHeight = $('#header').outerHeight();
-        var lastScrollTop = 0;
-        var moveScroll;
-
-        $(window).scroll(function(event) {
-            moveScroll = true;
-        });
-
-        setInterval(function() {
-            if (moveScroll) {
-                hasScroll();
-                moveScroll = false;
-            }
-        }, 250);
-
-        function hasScroll() {
-            var wScroll = $(this).scrollTop();
-            if (wScroll > lastScrollTop && wScroll > hdHeight) {
-                $('#header').addClass('on');
-            } else {
-                if (wScroll + wHeight < dHeight) {
-                    $('#header').removeClass('on');
-                }
-            }
-            lastScrollTop = wScroll;
-        }
-
-        // 검색창
-        $(".search").click(function() {
-            $(".search_text").addClass("on");
-        });
-        $(".close").click(function() {
-            $(".search_text").removeClass("on");
-        });
-
-        $(".search_text .btn").click(function() {
-            if ($(".search_text .inp").val().length == 0) {
-                alert("찾으시는 검색어를 입력해주세요.");
-                $(".search_text .inp").focus();
-                return false;
-            }
-        });
-
-        // ham - nav
-        $(".ham").click(function(e) {
-            e.preventDefault();
-            $(this).toggleClass("active");
-            $("#header").toggleClass("active");
-            $(".nav_menu").toggleClass("active");
-            $("html, body").toggleClass("noScroll");
-        });
-
-        //cont
-        var cont = $(".cont li");
-        for (var i = 0; i < cont.length; i++) {
-            if (i > 11) {
-                cont.eq(i).hide();
-            }
-        }
-
-        $(".cont .more").click(function(e) {
-            e.preventDefault();
-            for (var i = 0; i < cont.length; i++) {
-                if (i > 11) {
-                    cont.eq(i).show();
-                    $(this).hide();
-                }
-            }
-
-        });
-
-        // scrollLeft 0
-        $(".footer .arrow").click(function() {
-            $("html, body").animate({
-                scrollTop: 0,
-            }, 400);
-        });
-
-        // space-culture menu
-        $(".nav_menu ul li.s a").click(function(e) {
-            e.preventDefault();
-            $(".nav_menu ul > li").hide();
-            $(".nav_menu ul li.s").show().find("ul, li").show();
-        });
-
-        $(".nav_menu ul li ul li.back").click(function(e) {
-            e.preventDefault();
-            $(".nav_menu ul li").find("ul, li").hide();
-            $(".nav_menu ul > li").show();
-        });
-
-        $(".nav_menu ul li.c a").click(function(e) {
-            e.preventDefault();
-            $(".nav_menu ul > li").hide();
-            $(".nav_menu ul li.c").show().find("ul, li").show();
-        });
-
-    </script>
 </body>
 
 </html>
