@@ -1,0 +1,417 @@
+@charset "utf-8";
+
+/* scroll */
+html.noScroll,
+body.noScroll {overflow: hidden; height: 100%;}
+::-webkit-scrollbar {width: 10px;}
+::-webkit-scrollbar-track {background-color: #fff;}
+::-webkit-scrollbar-thumb {background-color: orangered;}
+::-webkit-scrollbar-button {width: 0; height: 0;}
+
+/* layout */
+#header {position: relative; background: transparent; position: fixed; left: 0; top: 0; width: 100%; height: 84px; z-index: 1000; border: 5px solid #fff; box-sizing: border-box; transition: all .2s ease;}
+#header.on {position: fixed; top: -84px;}
+#header.active {height: 100vh; background: #000;}
+#upper {position: relative; width: 100%; height: 700px; background: url(../img/super.jpg) no-repeat center center; background-size: cover;}
+#cont {width: 100%; border: 5px solid #000; box-sizing: border-box;}
+#footer {background: #000; margin-top: -5px;}
+
+/* row */
+.row {padding: 0 120px;}
+
+/* header */
+.header h1 a {position: absolute; left: 28px; top: 22px; width: 74px; height: 28px; background: url(../img/logo_w.svg) no-repeat;}
+.header .nav_center {text-align: center;}
+.header .nav_center li {display: inline-block; padding: 22px;}
+.header .nav_center li:hover .menu {display: block;}
+.header .nav_center li:nth-child(2) {position: relative;}
+.header .nav_center li:nth-child(3) {position: relative;}
+.header .nav_center li a {font-size: 20px; text-transform: uppercase; font-weight: 600; color: #fff;}
+.header .nav_center .menu {position: absolute; left: 0; top: 74px; display: block; background: #fff; padding: 18px 20px; border-radius: 20px; width: 200px; display: none;}
+.header .nav_center .menu::before {content: ''; position: absolute; left: 54px; top: -10px; margin-left: -10px; border-bottom: 10px solid #fff; border-left: 10px solid transparent; border-right: 10px solid transparent;}
+.header .nav_center .menu li {position: relative; display: block; padding: 2px 0; text-align: left; transition: all .3s;}
+.header .nav_center .menu li::before {content: ''; position: absolute; left: -15px; top: 15px; width: 6px; height: 6px; background: orangered; border-radius: 50%; opacity: 0; transition: all .3s .1s;}
+.header .nav_center .menu li:hover {transform: translateX(14px);}
+.header .nav_center .menu li:hover::before {opacity: 1;}
+.header .nav_center .menu li a {color: #000; font-weight: 600;}
+.header .nav_right .search {position: absolute; right: 28px; top: 23px;}
+.header .nav_right .search span {background: url(../img/search_w@2.png) no-repeat; width: 26px; height: 26px; background-size: cover;}
+.header .nav_right .search_text {position: absolute; right: 46px; top: 16px; width: 0; opacity: 0; transition: all .2s ease;}
+.header .nav_right .search_text.on {width: 210px; opacity: 1;}
+.header .nav_right .search_text.on .inp,
+.header .nav_right .search_text.on .btn {display: block;}
+.header .nav_right .search_text .inp {padding: 0 15px 2px; width: 100%; height: 43px; background: #fff; border-radius: 30px; display: none; color: #000; font-size: 16px;}
+input::placeholder {color: #000;}
+.header .nav_right .search_text .btn {position: absolute; top: 7px; right: -18px; background: url(../img/search@2.png) no-repeat; width: 26px; height: 26px; background-size: cover; display: none;}
+.header .nav_right .search_text .close {position: absolute; top: 13px; left: -20px; background: url(../img/close_w.png) no-repeat; width: 16px; height: 16px; background-size: cover;}
+.header .ham {display: none; position: absolute; right: 28px; top: 23px; width: 40px; height: 34px;}
+.header .ham div {width: 100%; height: 100%;}
+.header .ham span {display: block; background: #fff; width: 40px; height: 5px; transition: all .2s;}
+.header .ham span:nth-child(1) {margin-bottom: 6px;}
+.header .ham span:nth-child(2) {width: 30px; margin-left: 10px;}
+.header .ham span:nth-child(3) {margin-top: 6px;}
+.header .ham.active span {transition: all .2s;}
+.header .ham.active span:nth-child(1) {transform: rotate(45deg); margin-bottom: -5px; margin-top: 13px;}
+.header .ham.active span:nth-child(2) {width: 0; margin-left: 40px;}
+.header .ham.active span:nth-child(3) {transform: rotate(135deg); margin-top: -5px;}
+.header .nav_menu {text-align: center; padding: 110px 0; display: none;}
+.header .nav_menu.active {display: block;}
+.header .nav_menu ul li {padding: 20px; animation: fade-in 300ms ease forwards, slide-in 300ms ease forwards; opacity: 0; text-transform: uppercase; font-size: 28px; font-weight: 600;}
+.header .nav_menu ul li.w {animation-delay: calc((0 * 70ms) + 300ms);}
+.header .nav_menu ul li.s {position: relative; animation-delay: calc((1 * 70ms) + 300ms);}
+.header .nav_menu ul li.c {animation-delay: calc((2 * 70ms) + 300ms);}
+.header .nav_menu ul li.p {animation-delay: calc((3 * 70ms) + 300ms);}
+.header .nav_menu ul li a {color: #fff;}
+.header .nav_menu ul li ul {display: none; margin-top: 20px;}
+.header .nav_menu ul li ul li {padding: 16px; animation: fade-in 300ms ease forwards, slide-in 300ms ease forwards; opacity: 0; font-size: 18px; font-weight: 500; color: #fff; cursor: pointer;}
+.header .nav_menu ul li ul li.back {position: absolute; left: 30%; top: 30px; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-right: 20px solid #fff; padding: 0; cursor: pointer;}
+.header .nav_menu ul li.s li.d {animation-delay: calc((0 * 70ms) + 300ms);}
+.header .nav_menu ul li.s li.t {animation-delay: calc((1 * 70ms) + 300ms);}
+.header .nav_menu ul li.s li.m {animation-delay: calc((2 * 70ms) + 300ms);}
+.header .nav_menu ul li.s li.c {animation-delay: calc((3 * 70ms) + 300ms);}
+.header .nav_menu ul li.s li.u {animation-delay: calc((4 * 70ms) + 300ms);}
+.header .nav_menu ul li.s li.v {animation-delay: calc((5 * 70ms) + 300ms);}
+.header .nav_menu ul li.s li.s {animation-delay: calc((6 * 70ms) + 300ms);}
+.header .nav_menu ul li.c li.sc {animation-delay: calc((0 * 70ms) + 300ms);}
+.header .nav_menu ul li.c li.cp {animation-delay: calc((1 * 70ms) + 300ms);}
+.header .nav_menu ul li.c li.dm {animation-delay: calc((2 * 70ms) + 300ms);}
+
+@keyframes fade-in {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes slide-in {
+    0% {transform: translateY(-20px);}
+    100% {transform: translateY(0);}
+}
+
+#header.fill {background: #fff;border: 5px solid #000;}
+#header.fill .header .nav_center li a {color: #000;}
+#header.fill .header .nav_center .menu {background: #000;}
+#header.fill .header .nav_center .menu::before {border-bottom: 10px solid #000;}
+#header.fill .header .nav_center .menu li a {color: #fff;}
+#header.fill .header h1 a {background: url(../img/logo.svg) no-repeat;}
+#header.fill .header .nav_right .search span {background: url(../img/search@2.png) no-repeat; width: 26px; height: 26px; background-size: cover;}
+#header.fill .header .nav_right .search_text .inp {background: #000;}
+#header.fill input::placeholder {color: #fff;}
+#header.fill .header .nav_right .search_text .btn {background: url(../img/search_w@2.png) no-repeat; width: 26px; height: 26px; background-size: cover;}
+#header.fill .header .nav_right .search_text .close {background: url(../img/close.png) no-repeat; width: 16px; height: 16px; background-size: cover;}
+#header.fill .header .ham span {background: #000;}
+#header.fill .header .nav_menu ul li a {color: #000;}
+#header.fill .header .nav_menu ul li ul li.back {border-right: 20px solid #000;}
+#header.fill .header .nav_menu ul li ul li {color: #000;}
+
+/* upper */
+.upper {position: absolute; left: 120px; top: 50%; transform: translateY(-40%);}
+.upper h2 img {width: 95px;}
+.upper .title {color: #fff; margin-top: 16px; font-size: 60px; font-weight: 500; line-height: 80px;}
+.upper .link {display: inline-block; margin-top: 40px;}
+.upper .link a {color: #fff; text-transform: uppercase; font-size: 24px; font-weight: 700;}
+.upper .link a::after {display: block; content: ''; border-bottom: solid 5px #fff; transform: scaleX(0); transition: all .2s ease-out;}
+.upper .link a:hover::after {transform: scaleX(1);}
+
+/* cont */
+.cont {margin: 120px 0;}
+.cont ul {display: flex; flex-wrap: wrap; justify-content: space-between;}
+.cont ul li {width: 30%; margin-bottom: 4%; transition: all .3s ease-out;}
+.cont ul li:hover {transform: translateY(-20px);}
+.cont ul li .thum {border: 5px solid #000; height: 210px; border-top-left-radius: 20px; border-top-right-radius: 20px;}
+.cont ul li.sc01 .thum {background: url(../img/sc01.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc02 .thum {background: url(../img/sc02.jpg) no-repeat top center; background-size: 390px;}
+.cont ul li.sc03 .thum {background: url(../img/sc03.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc04 .thum {background: url(../img/sc04.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc05 .thum {background: url(../img/sc05.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc06 .thum {background: url(../img/sc06.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc07 .thum {background: url(../img/sc07.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc08 .thum {background: url(../img/sc08.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc09 .thum {background: url(../img/sc09.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc10 .thum {background: url(../img/sc10.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc11 .thum {background: url(../img/sc11.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc12 .thum {background: url(../img/sc12.jpg) no-repeat top center; background-size: 390px;}
+.cont ul li.sc13 .thum {background: url(../img/sc13.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc14 .thum {background: url(../img/sc14.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc15 .thum {background: url(../img/sc15.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc16 .thum {background: url(../img/sc16.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc17 .thum {background: url(../img/sc17.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc18 .thum {background: url(../img/sc18.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc19 .thum {background: url(../img/sc19.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc20 .thum {background: url(../img/sc20.jpg) no-repeat top center; background-size: 390px;}
+.cont ul li.sc21 .thum {background: url(../img/sc21.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc22 .thum {background: url(../img/sc22.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc23 .thum {background: url(../img/sc23.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc24 .thum {background: url(../img/sc24.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc25 .thum {background: url(../img/sc25.jpg) no-repeat center center; background-size: 390px;}
+.cont ul li.sc25 {margin-bottom: 0;}
+.cont ul li .text {border: 5px solid #000; margin-top: -7px; padding: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; margin-top: -5px;}
+.cont ul li .text h3 {font-size: 20px; font-weight: 600; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.cont ul li .text p {font-size: 16px; margin-top: 8px; color: #555;}
+.cont .more {text-align: center;}
+.cont .more a {font-size: 20px; font-weight: 500; text-transform: uppercase; background: #000; color: #fff; padding: 6px 100px 8px; border-radius: 30px;}
+
+/* footer */
+.footer {position: relative;}
+.footer .row {display: flex; justify-content: space-between; padding: 30px 120px;}
+.footer h2 span {background: url(../img/hyundai.svg) no-repeat; background-size: cover; width: 150px; height: 26px; margin-top: 42px;}
+.footer .footer_util {text-align: right;}
+.footer .footer_util li {color: #fff; margin-bottom: 4px; font-weight: 300; color: #e7e7e7;}
+.footer .footer_util li:nth-child(2) {display: inline-block; margin-right: 8px;}
+.footer .footer_util li:nth-child(3) {display: inline-block;}
+.footer .arrow {position: absolute; left: 120px; top: -25%; width: 60px; height: 60px; background: #fff; border: 5px solid #000; border-radius: 50%; cursor: pointer; transition: all .4s ease;}
+.footer .arrow::after {content: ''; position: absolute; left: 30%; top: 30%; border-bottom: 20px solid #000; border-left: 12px solid transparent; border-right: 12px solid transparent;}
+.footer .arrow:hover {transform: translateY(-10px);}
+
+
+
+
+
+
+
+
+
+
+/* 미디어 쿼리 */
+@media (max-width: 1290px) {
+    .row {padding: 0 60px;}
+    
+    #upper {height: 630px;}
+    .upper {left: 60px;}
+    .upper h2 img {width: 80px;}
+    .upper .title {font-size: 50px; line-height: 70px; margin-top: 12px;}
+    .upper .link a {font-size: 20px;}
+    
+    .cont {margin: 60px 0 80px;}
+    .cont ul li {width: 31%;}
+    .cont ul li .thum {height: 170px;}
+    .cont ul li.sc01 .thum {background-size: 350px;}
+    .cont ul li.sc02 .thum {background-size: 350px;}
+    .cont ul li.sc03 .thum {background-size: 350px;}
+    .cont ul li.sc04 .thum {background-size: 350px;}
+    .cont ul li.sc05 .thum {background-size: 350px;}
+    .cont ul li.sc06 .thum {background-size: 350px;}
+    .cont ul li.sc07 .thum {background-size: 350px;}
+    .cont ul li.sc08 .thum {background-size: 350px;}
+    .cont ul li.sc09 .thum {background-size: 350px;}
+    .cont ul li.sc10 .thum {background-size: 350px;}
+    .cont ul li.sc11 .thum {background-size: 350px;}
+    .cont ul li.sc12 .thum {background-size: 350px;}
+    .cont ul li.sc13 .thum {background-size: 350px;}
+    .cont ul li.sc14 .thum {background-size: 350px;}
+    .cont ul li.sc15 .thum {background-size: 350px;}
+    .cont ul li.sc16 .thum {background-size: 350px;}
+    .cont ul li.sc17 .thum {background-size: 350px;}
+    .cont ul li.sc18 .thum {background-size: 350px;}
+    .cont ul li.sc19 .thum {background-size: 350px;}
+    .cont ul li.sc20 .thum {background-size: 350px;}
+    .cont ul li.sc21 .thum {background-size: 350px;}
+    .cont ul li.sc22 .thum {background-size: 350px;}
+    .cont ul li.sc23 .thum {background-size: 350px;}
+    .cont ul li.sc24 .thum {background-size: 350px;}
+    .cont ul li.sc25 .thum {background-size: 350px;}
+    .cont ul li .text {padding: 16px;}
+    .cont ul li .text h3 {font-size: 18px;}
+    
+    .footer .row {padding: 30px 60px;}
+    .footer .arrow {left: 60px;}
+}
+
+@media (max-width: 1024px) {
+    .header .nav_right .search_text.on {width: 170px;}
+    .row {padding: 0 40px;}
+    
+    #upper {height: 580px;}
+    .upper {left: 40px;}
+    
+    .cont {margin: 40px 0 70px;}
+    .cont ul li {width: 32%; margin-bottom: 2%;}
+    .cont ul li:hover {transform: translateY(0);}
+    .cont ul li .thum {height: 150px;}
+    .cont .more {margin-top: 16px;}
+    
+    .footer .row {padding: 30px 40px;}
+    .footer .arrow {left: 40px;}
+}
+
+@media (max-width: 960px) {
+    .header .nav_center {display: none;}
+    .header .nav_right {display: none;}
+    .header .ham {display: block;}
+    
+    #upper {height: 540px;}
+    .upper {top: 53%;}
+    .upper h2 img {width: 75px;}
+    .upper .title {font-size: 42px; line-height: 60px; margin-top: 8px;}
+    .upper .link a {font-size: 18px;}
+    
+    .cont ul li {width: 48%; margin-bottom: 4%;}
+    .cont ul li .thum {height: 180px;}
+    .cont ul li.sc01 .thum {background-size: 410px;}
+    .cont ul li.sc02 .thum {background-size: 410px;}
+    .cont ul li.sc03 .thum {background-size: 410px;}
+    .cont ul li.sc04 .thum {background-size: 410px;}
+    .cont ul li.sc05 .thum {background-size: 410px;}
+    .cont ul li.sc06 .thum {background-size: 410px;}
+    .cont ul li.sc07 .thum {background-size: 410px;}
+    .cont ul li.sc08 .thum {background-size: 410px;}
+    .cont ul li.sc09 .thum {background-size: 410px;}
+    .cont ul li.sc10 .thum {background-size: 410px;}
+    .cont ul li.sc11 .thum {background-size: 410px;}
+    .cont ul li.sc12 .thum {background-size: 410px;}
+    .cont ul li.sc13 .thum {background-size: 410px;}
+    .cont ul li.sc14 .thum {background-size: 410px;}
+    .cont ul li.sc15 .thum {background-size: 410px;}
+    .cont ul li.sc16 .thum {background-size: 410px;}
+    .cont ul li.sc17 .thum {background-size: 410px;}
+    .cont ul li.sc18 .thum {background-size: 410px;}
+    .cont ul li.sc19 .thum {background-size: 410px;}
+    .cont ul li.sc20 .thum {background-size: 410px;}
+    .cont ul li.sc21 .thum {background-size: 410px;}
+    .cont ul li.sc22 .thum {background-size: 410px;}
+    .cont ul li.sc23 .thum {background-size: 410px;}
+    .cont ul li.sc24 .thum {background-size: 410px;}
+    .cont ul li.sc25 .thum {background-size: 410px;}
+}
+
+@media (max-width: 768px) {
+    .row {padding: 0 28px;}
+    
+    #upper {height: 480px;}
+    .upper {left: 28px;}
+    .upper h2 img {width: 70px;}
+    .upper .title {font-size: 38px; line-height: 55px;}
+    .upper .link {margin-top: 20px;}
+    
+    .cont {margin: 28px 0 58px;}
+    .cont ul li .text {padding: 12px;}
+    
+    .footer .row {padding: 30px 28px;}
+    .footer .arrow {left: 28px;}
+}
+
+@media (max-width: 600px) {
+    .header h1 a {left: 16px;}
+    .header .ham {right: 16px;}
+    .row {padding: 0 16px;}
+    
+    #upper {height: 400px;}
+    .upper {left: 16px; top: 56%;}
+    .upper h2 img {width: 65px;}
+    .upper .title {font-size: 30px; line-height: 43px;}
+    .upper .link a {font-size: 16px;}
+    
+    .cont ul li {width: 49%; margin-bottom: 2%;}
+    .cont ul li .thum {height: 120px;}
+    .cont ul li.sc01 .thum {background-size: 260px;}
+    .cont ul li.sc02 .thum {background-size: 260px;}
+    .cont ul li.sc03 .thum {background-size: 260px;}
+    .cont ul li.sc04 .thum {background-size: 260px;}
+    .cont ul li.sc05 .thum {background-size: 260px;}
+    .cont ul li.sc06 .thum {background-size: 260px;}
+    .cont ul li.sc07 .thum {background-size: 260px;}
+    .cont ul li.sc08 .thum {background-size: 260px;}
+    .cont ul li.sc09 .thum {background-size: 260px;}
+    .cont ul li.sc10 .thum {background-size: 260px;}
+    .cont ul li.sc11 .thum {background-size: 260px;}
+    .cont ul li.sc12 .thum {background-size: 260px;}
+    .cont ul li.sc13 .thum {background-size: 260px;}
+    .cont ul li.sc14 .thum {background-size: 260px;}
+    .cont ul li.sc15 .thum {background-size: 260px;}
+    .cont ul li.sc16 .thum {background-size: 260px;}
+    .cont ul li.sc17 .thum {background-size: 260px;}
+    .cont ul li.sc18 .thum {background-size: 260px;}
+    .cont ul li.sc19 .thum {background-size: 260px;}
+    .cont ul li.sc20 .thum {background-size: 260px;}
+    .cont ul li.sc21 .thum {background-size: 260px;}
+    .cont ul li.sc22 .thum {background-size: 260px;}
+    .cont ul li.sc23 .thum {background-size: 260px;}
+    .cont ul li.sc24 .thum {background-size: 260px;}
+    .cont ul li.sc25 .thum {background-size: 260px;}
+    .cont ul li .text h3 {font-size: 16px;}
+    .cont ul li .text p {margin-top: 4px; font-size: 14px;}
+    .cont .more a {font-size: 16px; padding: 4px 60px 6px;}
+    
+    .footer .row {display: block; padding: 28px 16px;}
+    .footer h2 {text-align: center; margin-bottom: 10px;}
+    .footer h2 span {width: 110px; height: 20px; display: inline-block; margin-top: 0;}
+    .footer .footer_util {text-align: center;}
+    .footer .footer_util li {font-size: 12px;}
+    .footer .arrow {left: 16px; top: -20%;}
+    
+}
+
+@media (max-width: 480px) {
+    #header {height: 74px;}
+    .header h1 a {top: 18px;}
+    .header .ham {top: 19px;}
+    .header .nav_menu ul li ul li {padding: 10px;}
+    .header .nav_menu ul li ul li.back {left: 15%;}
+    
+    #upper {height: 300px;}
+    .upper h2 img {display: none;}
+    .upper .title {font-size: 28px; line-height: 35px;}
+    
+    .cont {margin: 38px 0 68px;}
+    .cont ul li {width: 100%; margin-bottom: 4%;}
+    .cont ul li .thum {height: 160px;}
+    .cont ul li.sc01 .thum {background-size: 420px;}
+    .cont ul li.sc02 .thum {background-size: 420px;}
+    .cont ul li.sc03 .thum {background-size: 420px;}
+    .cont ul li.sc04 .thum {background-size: 420px;}
+    .cont ul li.sc05 .thum {background-size: 420px;}
+    .cont ul li.sc06 .thum {background-size: 420px;}
+    .cont ul li.sc07 .thum {background-size: 420px;}
+    .cont ul li.sc08 .thum {background-size: 420px;}
+    .cont ul li.sc09 .thum {background-size: 420px;}
+    .cont ul li.sc10 .thum {background-size: 420px;}
+    .cont ul li.sc11 .thum {background-size: 420px;}
+    .cont ul li.sc12 .thum {background-size: 420px;}
+    .cont ul li.sc13 .thum {background-size: 420px;}
+    .cont ul li.sc14 .thum {background-size: 420px;}
+    .cont ul li.sc15 .thum {background-size: 420px;}
+    .cont ul li.sc16 .thum {background-size: 420px;}
+    .cont ul li.sc17 .thum {background-size: 420px;}
+    .cont ul li.sc18 .thum {background-size: 420px;}
+    .cont ul li.sc19 .thum {background-size: 420px;}
+    .cont ul li.sc20 .thum {background-size: 420px;}
+    .cont ul li.sc21 .thum {background-size: 420px;}
+    .cont ul li.sc22 .thum {background-size: 420px;}
+    .cont ul li.sc23 .thum {background-size: 420px;}
+    .cont ul li.sc24 .thum {background-size: 420px;}
+    .cont ul li.sc25 .thum {background-size: 420px;}
+}
+
+@media (max-width: 320px) {
+    .header .nav_menu {padding: 80px 0;}
+    .header .nav_menu ul li ul {margin-top: 10px;}
+    
+    #upper {height: 260px;}
+    .upper {top: 58%;}
+    .upper .title {font-size: 24px; line-height: 30px;}
+    .upper .link {margin-top: 16px;}
+    
+    .cont ul li .thum {height: 120px;}
+    .cont ul li.sc01 .thum {background-size: 320px;}
+    .cont ul li.sc02 .thum {background-size: 320px;}
+    .cont ul li.sc03 .thum {background-size: 320px;}
+    .cont ul li.sc04 .thum {background-size: 320px;}
+    .cont ul li.sc05 .thum {background-size: 320px;}
+    .cont ul li.sc06 .thum {background-size: 320px;}
+    .cont ul li.sc07 .thum {background-size: 320px;}
+    .cont ul li.sc08 .thum {background-size: 320px;}
+    .cont ul li.sc09 .thum {background-size: 320px;}
+    .cont ul li.sc10 .thum {background-size: 320px;}
+    .cont ul li.sc11 .thum {background-size: 320px;}
+    .cont ul li.sc12 .thum {background-size: 320px;}
+    .cont ul li.sc13 .thum {background-size: 320px;}
+    .cont ul li.sc14 .thum {background-size: 320px;}
+    .cont ul li.sc15 .thum {background-size: 320px;}
+    .cont ul li.sc16 .thum {background-size: 320px;}
+    .cont ul li.sc17 .thum {background-size: 320px;}
+    .cont ul li.sc18 .thum {background-size: 320px;}
+    .cont ul li.sc19 .thum {background-size: 320px;}
+    .cont ul li.sc20 .thum {background-size: 320px;}
+    .cont ul li.sc21 .thum {background-size: 320px;}
+    .cont ul li.sc22 .thum {background-size: 320px;}
+    .cont ul li.sc23 .thum {background-size: 320px;}
+    .cont ul li.sc24 .thum {background-size: 320px;}
+    .cont ul li.sc25 .thum {background-size: 320px;}
+}
