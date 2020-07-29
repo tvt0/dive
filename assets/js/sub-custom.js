@@ -1,4 +1,10 @@
 (function ($) {
+    // loading
+    $(window).load(function(){
+        $("#loading").hide();
+        $("body").removeClass("noScroll");
+    });
+    
     // header fill
     $(window).scroll(function () {
         var wScroll = $(this).scrollTop();
