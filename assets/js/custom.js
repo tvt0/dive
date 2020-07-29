@@ -1,4 +1,10 @@
 (function ($) {
+    // loading
+    $(window).load(function(){
+        $("#loading").hide();
+        $("body").removeClass("noScroll");
+    });
+    
     // main slide
     var slideIndex = 0;
     showSlides();
