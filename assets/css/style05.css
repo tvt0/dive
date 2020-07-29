@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import url(reset.css);
 
 /* scroll */
 html {scroll-behavior: smooth;}
@@ -98,7 +99,6 @@ body.noScroll {overflow: hidden; height: 100%;}
 .header .nav_menu ul li.c li.sc {animation-delay: calc((0 * 70ms) + 300ms);}
 .header .nav_menu ul li.c li.cp {animation-delay: calc((1 * 70ms) + 300ms);}
 .header .nav_menu ul li.c li.dm {animation-delay: calc((2 * 70ms) + 300ms);}
-
 @keyframes fade-in {
     0% {opacity: 0;}
     100% {opacity: 1;}
@@ -107,6 +107,12 @@ body.noScroll {overflow: hidden; height: 100%;}
     0% {transform: translateY(-20px);}
     100% {transform: translateY(0);}
 }
+
+/* more */
+.more {position: relative; background: #000; display: inline-block; padding: 5px 24px 7px; border-radius: 20px; height: 30px; transform: translateY(-10px); transition: all .4s ease; opacity: 0;}
+.more::after {content: ''; position: absolute; left: 28px; bottom: -15px; border-top: 20px solid #000; border-left: 12px solid transparent; border-right: 12px solid transparent;}
+.more a {color: #fff; text-transform: uppercase; font-size: 20px; font-weight: 500;}
+.more.show {opacity: 1; transform: translateY(10px);}
 
 /* space */
 .space {display: flex; align-items: center; width: calc(100% - 295px); height: 100vh; border: 5px solid #000; box-sizing: border-box; padding-top: 89px; background: #fff;}
@@ -119,7 +125,6 @@ body.noScroll {overflow: hidden; height: 100%;}
 .space .slideshow-container .s5 {background: url(../img/ud.jpg) no-repeat center center; background-size: cover;}
 .space .slideshow-container .s6 {background: url(../img/vp.jpg) no-repeat center center; background-size: cover;}
 .space .slideshow-container .s7 {background: url(../img/st.jpg) no-repeat center center; background-size: cover;}
-/*.space .slideshow-container .title {width: 170px; height: 170px; background: #fff; border-radius: 50%; border: 5px solid #000; display: flex; align-items: center; justify-content: center; margin-left: 10%; margin-top: 18%;}*/
 .space .slideshow-container .title {position: absolute; left: 100px; top: 50%; width: 170px; height: 170px; background: #fff; border-radius: 50%; border: 5px solid #000; display: flex; align-items: center; justify-content: center; transform: translateY(-50%);}
 .space .slideshow-container .myslides span {width: 180px; height: 100px; transition: all .4s ease;}
 .space .slideshow-container .myslides span:hover {transform: scale(1.1);}
@@ -136,12 +141,10 @@ body.noScroll {overflow: hidden; height: 100%;}
 .space .dots .dot {cursor: pointer; height: 15px; width: 15px; margin: 0 4px; background: #fff; border: 5px solid #000; display: inline-block; border-radius: 50%;}
 .space .dots .dot.active {background: #000;}
 .space .fade {-webkit-animation-name: fade; -webkit-animation-duration: 1.5s; animation-name: fade; animation-duration: 1.5s;}
-
 @-webkit-keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
 }
-
 @keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
@@ -172,21 +175,8 @@ body.noScroll {overflow: hidden; height: 100%;}
 .program .date ul li span {position: relative; display: block; font-size: 16px; font-weight: 500; text-align: center; text-transform: uppercase; color: #c6c6c6;}
 .program .date ul li:first-child span {color: #EF4D4D;}
 .program .date ul li.active span::before {content: ''; position: absolute; left: 12px; top: -12px; background: #000; width: 8px; height: 8px; border-radius: 50%;}
-/*
-.program .date .more {position: relative; background: #000; display: inline-block; padding: 5px 24px 7px; border-radius: 20px; height: 30px; transform: translate(70px, 15px); transition: all .4s ease; opacity: 0;}
-.program .date .more::after {content: ''; position: absolute; left: 28px; bottom: -15px; border-top: 20px solid #000; border-left: 12px solid transparent; border-right: 12px solid transparent;}
-.program .date .more a {color: #fff; text-transform: uppercase; font-size: 20px; font-weight: 500;}
-.program .date .more.show {opacity: 1; transform: translate(70px, 35px);}
-*/
-.more {position: relative; background: #000; display: inline-block; padding: 5px 24px 7px; border-radius: 20px; height: 30px; transform: translateY(-10px); transition: all .4s ease; opacity: 0;}
-.more::after {content: ''; position: absolute; left: 28px; bottom: -15px; border-top: 20px solid #000; border-left: 12px solid transparent; border-right: 12px solid transparent;}
-.more a {color: #fff; text-transform: uppercase; font-size: 20px; font-weight: 500;}
-.more.show {opacity: 1; transform: translateY(10px);}
-
 .program .date .more {transform: translate(70px, 15px);}
 .program .date .more.show {transform: translate(70px, 35px);}
-
-
 .program .whatsOn {position: relative; width: 970px; height: 425px; overflow: hidden;}
 .program .whatsOn ul {position: absolute; left: 0; top: 50px; display: flex;}
 .program .whatsOn ul li {width: 100%; display: flex; justify-content: space-between; padding: 0 120px; box-sizing: border-box;}
@@ -243,7 +233,6 @@ body.noScroll {overflow: hidden; height: 100%;}
 .notice h2 {font-size: 36px; font-weight: 600; text-transform: uppercase;}
 .notice .more {transform: translateY(50px);}
 .notice .more::after {bottom: 38px; transform: rotate(180deg);}
-
 .notice .more.show {transform: translateY(30px);}
 .notice .cont6 {display: flex; flex-wrap: wrap; align-content: flex-start; padding: 75px 0 0 60px;}
 .notice .cont6 .not {width: 260px; height: 235px; margin-left: 80px;}
@@ -262,6 +251,7 @@ body.noScroll {overflow: hidden; height: 100%;}
 .footer .footer_util li {color: #fff; margin-bottom: 4px; font-weight: 300; color: #e7e7e7;}
 .footer .footer_util li:nth-child(2) {display: inline-block; margin-right: 8px;}
 .footer .footer_util li:nth-child(3) {display: inline-block;}
+
 
 /* 미디어쿼리 */
 @media (max-width: 1290px) {
@@ -418,11 +408,6 @@ body.noScroll {overflow: hidden; height: 100%;}
     .post .box .thum {height: 200px;}
     .post .box:hover .thum, .post .b1 .thum, .post .b2 .thum, .post .b3 .thum, .post .b4 .thum {background-size: 535px;}
     
-/*
-    .event .cont5 {display: block;}
-    .event .ev_box {width: 100%; height: 220px; margin-bottom: 5%;}
-    .event .ev_box h3 {padding-top: 140px;}
-*/
     .event .ev_box h3 {font-size: 16px; padding-top: 120px;}
     .event .ev_box p {display: none;}
     
@@ -470,8 +455,7 @@ body.noScroll {overflow: hidden; height: 100%;}
     .post h2, .event h2, .notice h2 {font-size: 24px;}
     .post .box {margin-bottom: 4%;}
     .post .box .thum {height: 160px;}
-    .post .box:hover .thum, .post .b1 .thum, .post .b2 .thum, .post .b3 .thum, .post .b4 .thum {background-size: 420px;}
-    
+    .post .box:hover .thum, .post .b1 .thum, .post .b2 .thum, .post .b3 .thum, .post .b4 .thum {background-size: 420px;} 
 
     .event .ev_box {height: 180px;}
     .event .ev_box h3 {padding-top: 80px;}
