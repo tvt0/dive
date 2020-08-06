@@ -407,7 +407,7 @@ body.noScroll {overflow: hidden; height: 100%;}
     .program .whatsOn ul {top: 20px;}
     .program .whatsOn ul li {padding: 0 50px;}
     .program .whatsOn ul li figure {width: 200px; height: 200px;}
-    .program .whatsOn ul li .text {padding-top: 10px;}
+    .program .whatsOn ul li .text p {display: none;}
     
     .post {display: block;}
 
