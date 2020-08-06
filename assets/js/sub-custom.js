@@ -5,6 +5,7 @@
         $("body").removeClass("noScroll");
     });
     
+    
     // header fill
     $(window).scroll(function () {
         var wScroll = $(this).scrollTop();
@@ -15,6 +16,7 @@
         }
     });
 
+    
     // header show-hide
     var wHeight = $(window).height();
     var dHeight = $(document).height();
@@ -45,6 +47,7 @@
         lastScrollTop = wScroll;
     }
 
+    
     // 검색창
     $(".search").click(function () {
         $(".search_text").addClass("on");
@@ -61,6 +64,7 @@
         }
     });
 
+    
     // ham - nav
     $(".ham").click(function (e) {
         e.preventDefault();
@@ -68,8 +72,29 @@
         $("#header").toggleClass("active");
         $(".nav_menu").toggleClass("active");
         $("html, body").toggleClass("noScroll");
+        if (!$(this).hasClass("active")) {
+            $("html, body").removeClass("noScroll");
+            $(".nav_menu ul > li").show();
+            $(".nav_menu ul li ul").hide();
+        }
     });
 
+    
+    // resize
+    $(window).resize(function () {
+        var wWidth = $(window).width();
+        if (wWidth > 960) {
+            $("html, body").removeClass("noScroll");
+            $(".search_text").removeClass("on");
+            $("#header").removeClass("active");
+            $(".nav_menu").removeClass("active");
+            $(".ham").removeClass("active");
+            $(".nav_menu ul > li").show();
+            $(".nav_menu ul li ul").hide();
+        }
+    });
+    
+    
     //cont
     var cont = $(".cont li");
     for (var i = 0; i < cont.length; i++) {
@@ -89,6 +114,7 @@
 
     });
 
+    
     // scrollLeft 0
     $(".footer .arrow").click(function () {
         $("html, body").animate({
@@ -96,6 +122,7 @@
         }, 400);
     });
 
+    
     // space-culture menu
     $(".nav_menu ul li.s a").click(function (e) {
         e.preventDefault();

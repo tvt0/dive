@@ -5,6 +5,7 @@
         $("body").removeClass("noScroll");
     });
     
+    
     // main slide
     var slideIndex = 0;
     showSlides();
@@ -24,6 +25,7 @@
         setTimeout(showSlides, 4000);
     }
 
+    
     // what's on
     var pos = 0;
     var totalSlides = $(".pro-slide-wrap ul li").length;
@@ -119,6 +121,7 @@
         }
     });
 
+    
     // more 말풍선 패럴랙스 효과
     $(window).scroll(function () {
         var scrollLeft = parseInt($(window).scrollLeft());
@@ -147,6 +150,7 @@
         alert("This site has some features that are not supported by your browser. I recommend Using the lastest version of Chrome and Edge.");
     }
 
+    
     // header show-hide
     var wHeight = $(window).height();
     var dHeight = $(document).height();
@@ -193,7 +197,8 @@
             return false;
         }
     });
-
+    
+    
     // ham - nav
     $(".ham").click(function (e) {
         e.preventDefault();
@@ -201,8 +206,29 @@
         $("#header").toggleClass("active");
         $(".nav_menu").toggleClass("active");
         $("html, body").toggleClass("noScroll");
+        if (!$(this).hasClass("active")) {
+            $("html, body").removeClass("noScroll");
+            $(".nav_menu ul > li").show();
+            $(".nav_menu ul li ul").hide();
+        }
     });
 
+    
+    // resize
+    $(window).resize(function () {
+        var wWidth = $(window).width();
+        if (wWidth > 960) {
+            $("html, body").removeClass("noScroll");
+            $(".search_text").removeClass("on");
+            $("#header").removeClass("active");
+            $(".nav_menu").removeClass("active");
+            $(".ham").removeClass("active");
+            $(".nav_menu ul > li").show();
+            $(".nav_menu ul li ul").hide();
+        }
+    });
+    
+    
     // space-culture menu
     $(".nav_menu ul li.s a").click(function (e) {
         e.preventDefault();
